@@ -8,6 +8,7 @@ def sort_array_desc(array)
     array.sort.reverse!
 end
 
+# Alternative sort_array_desc
 # def sort_array_desc(array)
 #     array.sort_by {|item| -item}
 # end
@@ -21,8 +22,10 @@ def swap_elements(array)
     array
 end
 
-# def swap_elements_from_to
-# end
+def swap_elements_from_to(array, index, destination_index)
+    array[index], array[destination_index] = array[destination_index], array[index]
+    array
+end
 
 def reverse_array(array)
     array.reverse!
@@ -41,16 +44,25 @@ def find_a(array)
     end
 end
 
-def sum_array(array)
-    array.sum
-end
+# def sum_array(array)
+#     array.sum
+# end
 
 # sum_array using inject
+def sum_array(array)
+    array.inject {|sum, num| sum + num}
+
+end
+
+# def add_s(array)
+#     array.map do |word|
+#         word == array[1] ? word : word + "s"
+#     end
+# end
 
 def add_s(array)
-    array.map do |word|
-        word == array[1] ? word : word + "s"
+    array.each_with_index.collect do |word, index|
+        index == 1 ? word : word+"s"
     end
 end
 
-#.each with index
